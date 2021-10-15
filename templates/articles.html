@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}
+Məqalələr
+{% endblock title %}
+{% block body %}
+<h3>Məqalələr</h3>
+<hr>
+
+{% if articles %}
+<form action="/search" method="post">
+    <input type="text" name="keyword" class="input-sm" maxlength="64" placeholder="Axtar...">
+    <button type="submit" class="btn btn-danger">Axtar</button>
+    <hr>
+</form>
+  
+
+<ul class="list-group">
+  {% for article in articles %}
+  <li class = "list-group-item"><a style="text-decoration:none" href="/article/{{article.id}}">{{article.title}}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<div class = "alert alert-danger">Bu səhifədə hələ ki bir məqalə yoxdur</div>
+{% endif %}
+
+
+
+{% endblock body %}

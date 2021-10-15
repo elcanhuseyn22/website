@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Məqalə güncəllə
+{% endblock  %}
+
+{% block body %}
+{% from "includes/_formhelpers.html" import render_field %}
+
+<h3>Məqalə güncəllə</h3>
+<hr>
+<form method = "post">
+{{ render_field(form.title,class = "form-control") }}
+{{ render_field(form.content,class = "form-control") }}
+
+<button type="submit" class="btn btn-danger btn-lg">Güncəllə</button>
+</form>
+
+{% endblock body %}

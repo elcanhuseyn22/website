@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+İdarəetmə paneli
+{% endblock title %}
+
+{% block body %}
+<div class="jumbotron text-center">
+
+    <h3>İdarəetmə paneli</h3>
+    <a href="/addarticle" class = "btn btn-primary btn-lg">Məqalə əlavə et</a>
+</div>
+{% if articles %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Başlığ</th>
+      <th scope="col">Yazar</th>
+      <th scope="col">Tarix</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+<tbody>
+{% for article in articles %}
+    <tr>
+      <th scope="row">{{article.id}}</th>
+      <td><a style="text-decoration:none" href="/article/{{article.id}}">{{article.title}}</a></td>
+      <td>{{article.author}}</td>
+      <td>{{article.created_date}}</td>
+      <td><a style="text-decoration:none" href="/edit/{{article.id}}">Güncəllə</a></td>
+      <td><a style="text-decoration:none" href="/delete/{{article.id}}">Sil</a></td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% else %}
+<div class = "alert alert-danger">Hələ heç bir məqalə yaratmamısız :(</div>
+{% endif %}
+{% endblock body %}
